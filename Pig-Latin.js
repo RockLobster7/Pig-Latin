@@ -12,7 +12,17 @@ Input strings are guaranteed to be English words in all lowercase.
 
 
 function translatePigLatin(str) {
+
+    /^[aeiou]/   // identifies the first letter as a vowel
+
+    /(^[^aeiou])[aeiou]/  // identifies the first letter a consonant followed by vowel
+
+    /^[^aeiou]/  //identifies the first letter a consonant
+
+    /(^[^aeiou])[^aeiou]/  // identifies the first letter as a consonant, followed by a another consonant
+
     
+
     return str;
   }
   
