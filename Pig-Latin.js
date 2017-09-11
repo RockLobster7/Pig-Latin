@@ -13,22 +13,19 @@ Input strings are guaranteed to be English words in all lowercase.
 
 function translatePigLatin(str) {
 
-    /^[aeiou]/   // identifies the first letter as a vowel
+    if (/(^[^aeiou])[^aeiou]/.test(str)) {
+        return str.slice(2) + str[0] + str[1] + "ay";
 
-    /(^[^aeiou])[aeiou]/  // identifies the first letter a consonant followed by vowel
+    } else if (/^[aeiou]/.test(str)) {
+        return str + "way";
+    }
 
-    /^[^aeiou]/  //identifies the first letter a consonant
+    return str.slice(1) + str[0] + "ay";
+}
 
-    /(^[^aeiou])[^aeiou]/  // identifies the first letter as a consonant, followed by a another consonant
-
-    
-
-    return str;
-  }
-  
-  console.log(translatePigLatin("consonant")); // should return "onsonantcay"
-  console.log(translatePigLatin("california")); // should return "aliforniacay".
-  console.log(translatePigLatin("paragraphs")); // should return "aragraphspay".
-  console.log(translatePigLatin("glove")); // should return "oveglay".
-  console.log(translatePigLatin("algorithm")); // should return "algorithmway".
-  console.log(translatePigLatin("eight")); //should return "eightway".
+console.log(translatePigLatin("consonant")); // should return "onsonantcay"
+console.log(translatePigLatin("california")); // should return "aliforniacay".
+console.log(translatePigLatin("paragraphs")); // should return "aragraphspay".
+console.log(translatePigLatin("glove")); // should return "oveglay".
+console.log(translatePigLatin("algorithm")); // should return "algorithmway".
+console.log(translatePigLatin("eight")); //should return "eightway".
